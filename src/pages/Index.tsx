@@ -1,6 +1,7 @@
+import { useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Users, Award, TrendingUp, ArrowRight, Quote } from "lucide-react";
+import { Users, Award, TrendingUp, ArrowRight, Quote, ChevronLeft, ChevronRight } from "lucide-react";
 import Layout from "@/components/layout/Layout";
 import heroImage from "@/assets/hero-road.jpg";
 
@@ -55,7 +56,20 @@ const testimonials = [
   },
 ];
 
+const CARD_WIDTH = 350;
+const CARD_GAP = 32; // mx-4 = 16px each side
+
 const Index = () => {
+  const [carouselOffset, setCarouselOffset] = useState(0);
+  const testimonialCount = testimonials.length;
+
+  const scrollLeft = () => {
+    setCarouselOffset((prev) => Math.min(prev + 1, 0));
+  };
+
+  const scrollRight = () => {
+    setCarouselOffset((prev) => Math.max(prev - 1, -(testimonialCount - 1)));
+  };
   return (
     <Layout>
       {/* Hero Section */}
@@ -171,30 +185,70 @@ const Index = () => {
           </motion.div>
         </div>
 
-        {/* Auto-scrolling Testimonials */}
+        {/* Manual Carousel with Arrows */}
         <div className="relative">
-          <div className="flex testimonial-track">
-            {[...testimonials, ...testimonials].map((testimonial, index) => (
-              <div
-                key={index}
-                className="flex-shrink-0 w-[350px] mx-4 bg-card rounded-xl p-6 shadow-card"
-              >
-                <Quote className="w-8 h-8 text-secondary/30 mb-4" />
-                <p className="text-foreground mb-4 leading-relaxed">"{testimonial.text}"</p>
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-semibold">
-                    {testimonial.name.charAt(0)}
-                  </div>
-                  <div>
-                    <p className="font-medium text-foreground">{testimonial.name}</p>
-                    <div className="flex gap-0.5">
-                      {[...Array(testimonial.rating)].map((_, i) => (
-                        <span key={i} className="text-yellow-500">★</span>
-                      ))}
+          {/* Left Arrow */}
+          <button
+            onClick={scrollLeft}
+            disabled={carouselOffset >= 0}
+            className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-card shadow-lg flex items-center justify-center hover:bg-secondary hover:text-secondary-foreground transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+            aria-label="Previous testimonial"
+          >
+            <ChevronLeft className="w-6 h-6" />
+          </button>
+
+          {/* Right Arrow */}
+          <button
+            onClick={scrollRight}
+            disabled={carouselOffset <= -(testimonialCount - 1)}
+            className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-card shadow-lg flex items-center justify-center hover:bg-secondary hover:text-secondary-foreground transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+            aria-label="Next testimonial"
+          >
+            <ChevronRight className="w-6 h-6" />
+          </button>
+
+          <div className="overflow-hidden px-16 md:px-24">
+            <motion.div
+              className="flex"
+              animate={{ x: carouselOffset * (CARD_WIDTH + CARD_GAP) }}
+              transition={{ type: "spring", stiffness: 300, damping: 30 }}
+            >
+              {testimonials.map((testimonial, index) => (
+                <div
+                  key={index}
+                  className="flex-shrink-0 w-[350px] mx-4 bg-card rounded-xl p-6 shadow-card"
+                >
+                  <Quote className="w-8 h-8 text-secondary/30 mb-4" />
+                  <p className="text-foreground mb-4 leading-relaxed">"{testimonial.text}"</p>
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-semibold">
+                      {testimonial.name.charAt(0)}
+                    </div>
+                    <div>
+                      <p className="font-medium text-foreground">{testimonial.name}</p>
+                      <div className="flex gap-0.5">
+                        {[...Array(testimonial.rating)].map((_, i) => (
+                          <span key={i} className="text-yellow-500">★</span>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              ))}
+            </motion.div>
+          </div>
+
+          {/* Dots Indicator */}
+          <div className="flex justify-center gap-2 mt-6">
+            {testimonials.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCarouselOffset(-index)}
+                className={`w-2.5 h-2.5 rounded-full transition-colors ${
+                  carouselOffset === -index ? "bg-secondary" : "bg-border hover:bg-muted-foreground"
+                }`}
+                aria-label={`Go to testimonial ${index + 1}`}
+              />
             ))}
           </div>
         </div>
