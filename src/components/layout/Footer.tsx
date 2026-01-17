@@ -101,6 +101,17 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="mt-10 md:mt-12 pt-6 md:pt-8 border-t border-primary-foreground/20 flex flex-col md:flex-row justify-between items-center gap-4 text-sm opacity-70">
           <p>© {new Date().getFullYear()} New Ambey Motor Driving School. All rights reserved.</p>
+          <p className="flex items-center gap-1">
+            Designed by{" "}
+            <a 
+              href="https://krish-garg.netlify.app" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-secondary hover:text-secondary/80 transition-colors font-medium"
+            >
+              Krish Garg
+            </a>
+          </p>
           <p>Jaipur, Rajasthan, India</p>
         </div>
       </div>
