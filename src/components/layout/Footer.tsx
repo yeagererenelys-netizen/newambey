@@ -1,11 +1,12 @@
 import { Link } from "react-router-dom";
 import { Car, Phone, MapPin, Clock, Facebook, Instagram, Youtube } from "lucide-react";
+import WhatsAppButton from "@/components/WhatsAppButton";
 
 const Footer = () => {
   return (
     <footer className="bg-primary text-primary-foreground">
-      <div className="container mx-auto px-4 py-12 md:py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div className="container mx-auto px-4 py-10 md:py-12 lg:py-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand */}
           <div className="space-y-4">
             <Link to="/" className="flex items-center gap-2">
@@ -31,6 +32,7 @@ const Footer = () => {
               <a href="#" className="w-9 h-9 rounded-full bg-primary-foreground/10 flex items-center justify-center hover:bg-secondary transition-colors">
                 <Youtube className="w-4 h-4" />
               </a>
+              <WhatsAppButton variant="icon-only" />
             </div>
           </div>
 
@@ -90,11 +92,14 @@ const Footer = () => {
                 <span className="opacity-80">Opens 4 AM (Sat - Thu)</span>
               </li>
             </ul>
+            <div className="mt-4">
+              <WhatsAppButton className="text-sm py-2 px-3" />
+            </div>
           </div>
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-12 pt-8 border-t border-primary-foreground/20 flex flex-col md:flex-row justify-between items-center gap-4 text-sm opacity-70">
+        <div className="mt-10 md:mt-12 pt-6 md:pt-8 border-t border-primary-foreground/20 flex flex-col md:flex-row justify-between items-center gap-4 text-sm opacity-70">
           <p>© {new Date().getFullYear()} New Ambey Motor Driving School. All rights reserved.</p>
           <p>Jaipur, Rajasthan, India</p>
         </div>

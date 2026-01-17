@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Car } from "lucide-react";
+import { Menu, X, Car, MessageCircle } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
@@ -10,6 +10,8 @@ const navLinks = [
   { name: "Road Signs", path: "/roadsigns" },
   { name: "Contact", path: "/contact" },
 ];
+
+const WHATSAPP_URL = "https://wa.me/9636420602";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -36,7 +38,7 @@ const Navbar = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-6 lg:gap-8">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
@@ -48,6 +50,15 @@ const Navbar = () => {
                 {link.name}
               </Link>
             ))}
+            <a
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-3 py-2 rounded-lg bg-[#25D366] text-white text-sm font-medium hover:bg-[#20BD5A] transition-colors"
+            >
+              <MessageCircle className="w-4 h-4" />
+              <span className="hidden lg:inline">WhatsApp</span>
+            </a>
             <Link to="/contact" className="btn-secondary text-sm py-2 px-4">
               Get Started
             </Link>
@@ -99,8 +110,18 @@ const Navbar = () => {
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: navLinks.length * 0.1 }}
-                className="pt-2"
+                className="pt-2 space-y-2"
               >
+                <a
+                  href={WHATSAPP_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setIsOpen(false)}
+                  className="flex items-center justify-center gap-2 w-full py-3 px-4 rounded-lg bg-[#25D366] text-white font-medium hover:bg-[#20BD5A] transition-colors"
+                >
+                  <MessageCircle className="w-5 h-5" />
+                  Contact Us on WhatsApp
+                </a>
                 <Link
                   to="/contact"
                   onClick={() => setIsOpen(false)}

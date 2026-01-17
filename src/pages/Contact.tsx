@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { MapPin, Phone, Clock, Send, Loader2, CheckCircle, Mail } from "lucide-react";
 import emailjs from "@emailjs/browser";
 import Layout from "@/components/layout/Layout";
+import WhatsAppButton from "@/components/WhatsAppButton";
 
 const topics = [
   "General Enquiry",
@@ -61,8 +62,11 @@ const Contact = () => {
 
   return (
     <Layout>
+      {/* Floating WhatsApp Button */}
+      <WhatsAppButton variant="floating" />
+
       {/* Header */}
-      <section className="pt-12 pb-20 bg-muted">
+      <section className="pt-12 pb-16 md:pb-20 bg-muted">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -70,19 +74,19 @@ const Contact = () => {
             transition={{ duration: 0.5 }}
             className="max-w-3xl mx-auto text-center"
           >
-            <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4">
               Get in <span className="text-secondary">Touch</span>
             </h1>
-            <p className="text-xl text-muted-foreground">
+            <p className="text-lg md:text-xl text-muted-foreground">
               Have questions? We'd love to hear from you. Send us a message!
             </p>
           </motion.div>
         </div>
       </section>
 
-      <section className="py-20 bg-background">
+      <section className="py-16 md:py-20 bg-background">
         <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-12">
+          <div className="grid lg:grid-cols-2 gap-8 md:gap-12">
             {/* Contact Info */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
@@ -90,12 +94,12 @@ const Contact = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
             >
-              <h2 className="text-2xl font-bold text-foreground mb-6">Contact Information</h2>
+              <h2 className="text-xl md:text-2xl font-bold text-foreground mb-6">Contact Information</h2>
               
-              <div className="space-y-6 mb-10">
+              <div className="space-y-5 md:space-y-6 mb-8 md:mb-10">
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
-                    <MapPin className="w-5 h-5 text-primary" />
+                  <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
+                    <MapPin className="w-4 h-4 md:w-5 md:h-5 text-primary" />
                   </div>
                   <div>
                     <h3 className="font-medium text-foreground mb-1">Address</h3>
@@ -107,8 +111,8 @@ const Contact = () => {
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-secondary/10 flex items-center justify-center shrink-0">
-                    <Phone className="w-5 h-5 text-secondary" />
+                  <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-secondary/10 flex items-center justify-center shrink-0">
+                    <Phone className="w-4 h-4 md:w-5 md:h-5 text-secondary" />
                   </div>
                   <div>
                     <h3 className="font-medium text-foreground mb-1">Phone</h3>
@@ -119,8 +123,8 @@ const Contact = () => {
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
-                    <Clock className="w-5 h-5 text-primary" />
+                  <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
+                    <Clock className="w-4 h-4 md:w-5 md:h-5 text-primary" />
                   </div>
                   <div>
                     <h3 className="font-medium text-foreground mb-1">Working Hours</h3>
@@ -132,8 +136,8 @@ const Contact = () => {
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-secondary/10 flex items-center justify-center shrink-0">
-                    <Mail className="w-5 h-5 text-secondary" />
+                  <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-secondary/10 flex items-center justify-center shrink-0">
+                    <Mail className="w-4 h-4 md:w-5 md:h-5 text-secondary" />
                   </div>
                   <div>
                     <h3 className="font-medium text-foreground mb-1">Email</h3>
@@ -142,8 +146,14 @@ const Contact = () => {
                 </div>
               </div>
 
+              {/* WhatsApp CTA */}
+              <div className="mb-8 md:mb-10">
+                <h3 className="font-medium text-foreground mb-3">Quick Connect</h3>
+                <WhatsAppButton />
+              </div>
+
               {/* Map */}
-              <div className="rounded-xl overflow-hidden shadow-card h-[300px]">
+              <div className="rounded-xl overflow-hidden shadow-card h-[250px] md:h-[300px]">
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3557.9999999999995!2d75.777938615042!3d26.961972283098!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396db3b53d722409%3A0x42a7c669cc038d6c!2sNEW+AMBEY+MOTOR+DRIVING+SCHOOL!5e0!3m2!1sen!2sin!4v1699999999999"
                   width="100%"
@@ -164,20 +174,20 @@ const Contact = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
             >
-              <div className="bg-card rounded-2xl p-6 md:p-8 shadow-card">
-                <h2 className="text-2xl font-bold text-foreground mb-6">Send a Message</h2>
+              <div className="bg-card rounded-2xl p-5 md:p-6 lg:p-8 shadow-card">
+                <h2 className="text-xl md:text-2xl font-bold text-foreground mb-6">Send a Message</h2>
 
                 {isSuccess ? (
                   <motion.div
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    className="text-center py-12"
+                    className="text-center py-10 md:py-12"
                   >
-                    <div className="w-16 h-16 rounded-full bg-secondary/20 flex items-center justify-center mx-auto mb-4">
-                      <CheckCircle className="w-8 h-8 text-secondary" />
+                    <div className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-secondary/20 flex items-center justify-center mx-auto mb-4">
+                      <CheckCircle className="w-7 h-7 md:w-8 md:h-8 text-secondary" />
                     </div>
-                    <h3 className="text-xl font-semibold text-foreground mb-2">Query Sent!</h3>
-                    <p className="text-muted-foreground mb-6">
+                    <h3 className="text-lg md:text-xl font-semibold text-foreground mb-2">Query Sent!</h3>
+                    <p className="text-muted-foreground text-sm md:text-base mb-6">
                       Thank you for contacting us. We'll get back to you soon.
                     </p>
                     <button
@@ -188,7 +198,7 @@ const Contact = () => {
                     </button>
                   </motion.div>
                 ) : (
-                  <form onSubmit={handleSubmit} className="space-y-5">
+                  <form onSubmit={handleSubmit} className="space-y-4 md:space-y-5">
                     <div>
                       <label htmlFor="name" className="block text-sm font-medium text-foreground mb-1.5">
                         Full Name *
@@ -200,12 +210,12 @@ const Contact = () => {
                         value={formData.name}
                         onChange={handleChange}
                         required
-                        className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-secondary/50 focus:border-secondary transition-all"
+                        className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-secondary/50 focus:border-secondary transition-all text-base"
                         placeholder="Your name"
                       />
                     </div>
 
-                    <div className="grid sm:grid-cols-2 gap-5">
+                    <div className="grid sm:grid-cols-2 gap-4 md:gap-5">
                       <div>
                         <label htmlFor="email" className="block text-sm font-medium text-foreground mb-1.5">
                           Email Address *
@@ -217,7 +227,7 @@ const Contact = () => {
                           value={formData.email}
                           onChange={handleChange}
                           required
-                          className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-secondary/50 focus:border-secondary transition-all"
+                          className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-secondary/50 focus:border-secondary transition-all text-base"
                           placeholder="your@email.com"
                         />
                       </div>
@@ -232,7 +242,7 @@ const Contact = () => {
                           value={formData.phone}
                           onChange={handleChange}
                           required
-                          className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-secondary/50 focus:border-secondary transition-all"
+                          className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-secondary/50 focus:border-secondary transition-all text-base"
                           placeholder="+91 98765 43210"
                         />
                       </div>
@@ -248,7 +258,7 @@ const Contact = () => {
                         value={formData.topic}
                         onChange={handleChange}
                         required
-                        className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-secondary/50 focus:border-secondary transition-all"
+                        className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-secondary/50 focus:border-secondary transition-all text-base"
                       >
                         <option value="">Select a topic</option>
                         {topics.map((topic) => (
@@ -270,7 +280,7 @@ const Contact = () => {
                         onChange={handleChange}
                         required
                         rows={4}
-                        className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-secondary/50 focus:border-secondary transition-all resize-none"
+                        className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-secondary/50 focus:border-secondary transition-all resize-none text-base"
                         placeholder="How can we help you?"
                       />
                     </div>

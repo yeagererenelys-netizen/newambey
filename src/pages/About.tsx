@@ -2,22 +2,38 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Heart, Shield, Smile, Target, ArrowRight, CheckCircle } from "lucide-react";
 import Layout from "@/components/layout/Layout";
+import WhatsAppButton from "@/components/WhatsAppButton";
 
 const trainers = [
   {
-    name: "Lokesh Sir",
+    name: "Vishal Sharma",
+    role: "Owner & Head Instructor",
+    bio: "Founder of New Ambey Motor Driving School with over 24 years of experience. Passionate about road safety education.",
+  },
+  {
+    name: "Amit Singh Ji",
     role: "Senior Instructor",
-    bio: "Patient and professional instructor with over 15 years of experience. Known for treating students like family.",
+    bio: "Patient and professional instructor with excellent teaching skills. Specializes in beginner training.",
   },
   {
-    name: "Kaushal Bhaiya",
+    name: "Man Singh Ji",
     role: "Driving Instructor",
-    bio: "Expert in teaching beginners with clear explanations and friendly approach. Specializes in confidence building.",
+    bio: "Expert in teaching defensive driving techniques. Known for building confidence in nervous students.",
   },
   {
-    name: "Ramesh Ji",
-    role: "Theory Instructor",
-    bio: "Thorough knowledge of road signs and traffic rules. Prepares students for theoretical exams.",
+    name: "Kosar Ji",
+    role: "Driving Instructor",
+    bio: "Friendly approach with clear explanations. Dedicated to helping students become safe drivers.",
+  },
+  {
+    name: "Manish Ji",
+    role: "Driving Instructor",
+    bio: "Thorough knowledge of traffic rules and road signs. Great with first-time learners.",
+  },
+  {
+    name: "Ishant Sharma Ji",
+    role: "Driving Instructor",
+    bio: "Young and enthusiastic trainer. Excellent at teaching modern driving techniques.",
   },
 ];
 
@@ -31,6 +47,9 @@ const whyChooseUs = [
 const About = () => {
   return (
     <Layout>
+      {/* Floating WhatsApp Button */}
+      <WhatsAppButton variant="floating" />
+
       {/* Header */}
       <section className="pt-12 pb-20 bg-muted">
         <div className="container mx-auto px-4">
@@ -40,10 +59,10 @@ const About = () => {
             transition={{ duration: 0.5 }}
             className="max-w-3xl mx-auto text-center"
           >
-            <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4">
               About <span className="text-secondary">New Ambey</span>
             </h1>
-            <p className="text-xl text-muted-foreground">
+            <p className="text-lg md:text-xl text-muted-foreground">
               Driving School for Women and Men Since 2000
             </p>
           </motion.div>
@@ -51,9 +70,9 @@ const About = () => {
       </section>
 
       {/* Our Story */}
-      <section className="py-20 bg-background">
+      <section className="py-16 md:py-20 bg-background">
         <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -69,8 +88,8 @@ const About = () => {
                 </p>
                 <p>
                   We offer comprehensive driving training with a strong focus on patience, safety, 
-                  and skill-building. Our trainers, like Lokesh Sir and Kaushal Bhaiya, treat students 
-                  like family, ensuring a comfortable and supportive learning environment.
+                  and skill-building. Our trainers treat students like family, ensuring a comfortable 
+                  and supportive learning environment.
                 </p>
                 <p>
                   Whether you're a complete beginner, a woman learning to drive, or someone looking 
@@ -87,20 +106,20 @@ const About = () => {
               className="grid grid-cols-2 gap-4"
             >
               <div className="card-hover text-center">
-                <div className="text-4xl font-bold text-primary mb-2">24+</div>
-                <div className="text-sm text-muted-foreground">Years Experience</div>
+                <div className="text-3xl md:text-4xl font-bold text-primary mb-2">24+</div>
+                <div className="text-xs md:text-sm text-muted-foreground">Years Experience</div>
               </div>
               <div className="card-hover text-center">
-                <div className="text-4xl font-bold text-secondary mb-2">5000+</div>
-                <div className="text-sm text-muted-foreground">Students Trained</div>
+                <div className="text-3xl md:text-4xl font-bold text-secondary mb-2">5000+</div>
+                <div className="text-xs md:text-sm text-muted-foreground">Students Trained</div>
               </div>
               <div className="card-hover text-center">
-                <div className="text-4xl font-bold text-primary mb-2">95%</div>
-                <div className="text-sm text-muted-foreground">Success Rate</div>
+                <div className="text-3xl md:text-4xl font-bold text-primary mb-2">95%</div>
+                <div className="text-xs md:text-sm text-muted-foreground">Success Rate</div>
               </div>
               <div className="card-hover text-center">
-                <div className="text-4xl font-bold text-secondary mb-2">4.8</div>
-                <div className="text-sm text-muted-foreground">Star Rating</div>
+                <div className="text-3xl md:text-4xl font-bold text-secondary mb-2">4.8</div>
+                <div className="text-xs md:text-sm text-muted-foreground">Star Rating</div>
               </div>
             </motion.div>
           </div>
@@ -108,7 +127,7 @@ const About = () => {
       </section>
 
       {/* Our Team */}
-      <section className="py-20 bg-muted">
+      <section className="py-16 md:py-20 bg-muted">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -123,7 +142,7 @@ const About = () => {
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {trainers.map((trainer, index) => (
               <motion.div
                 key={trainer.name}
@@ -133,13 +152,13 @@ const About = () => {
                 transition={{ delay: index * 0.1, duration: 0.5 }}
                 className="card-hover text-center"
               >
-                <div className="w-20 h-20 rounded-full bg-primary mx-auto mb-4 flex items-center justify-center">
-                  <span className="text-3xl font-bold text-primary-foreground">
+                <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-primary mx-auto mb-4 flex items-center justify-center">
+                  <span className="text-2xl md:text-3xl font-bold text-primary-foreground">
                     {trainer.name.charAt(0)}
                   </span>
                 </div>
-                <h3 className="text-xl font-semibold text-foreground mb-1">{trainer.name}</h3>
-                <p className="text-secondary font-medium text-sm mb-3">{trainer.role}</p>
+                <h3 className="text-lg md:text-xl font-semibold text-foreground mb-1">{trainer.name}</h3>
+                <p className="text-secondary font-medium text-xs md:text-sm mb-3">{trainer.role}</p>
                 <p className="text-muted-foreground text-sm">{trainer.bio}</p>
               </motion.div>
             ))}
@@ -148,9 +167,9 @@ const About = () => {
       </section>
 
       {/* Why Choose Us */}
-      <section className="py-20 bg-background">
+      <section className="py-16 md:py-20 bg-background">
         <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -181,9 +200,9 @@ const About = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="bg-primary rounded-2xl p-8 text-primary-foreground"
+              className="bg-primary rounded-2xl p-6 md:p-8 text-primary-foreground"
             >
-              <h3 className="text-2xl font-bold mb-4">Our Commitment</h3>
+              <h3 className="text-xl md:text-2xl font-bold mb-4">Our Commitment</h3>
               <ul className="space-y-3">
                 {[
                   "Personalized attention for each student",
@@ -194,7 +213,7 @@ const About = () => {
                 ].map((item, index) => (
                   <li key={index} className="flex items-start gap-3">
                     <CheckCircle className="w-5 h-5 text-secondary shrink-0 mt-0.5" />
-                    <span className="text-primary-foreground/90">{item}</span>
+                    <span className="text-primary-foreground/90 text-sm md:text-base">{item}</span>
                   </li>
                 ))}
               </ul>
@@ -204,7 +223,7 @@ const About = () => {
       </section>
 
       {/* CTA */}
-      <section className="py-16 bg-muted">
+      <section className="py-12 md:py-16 bg-muted">
         <div className="container mx-auto px-4 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -212,7 +231,7 @@ const About = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-foreground mb-4">
               Learn Essential Road Signs
             </h2>
             <p className="text-muted-foreground mb-6">
