@@ -1,8 +1,10 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Users, Award, TrendingUp, ArrowRight, Quote, ChevronLeft, ChevronRight } from "lucide-react";
 import Layout from "@/components/layout/Layout";
+import GallerySlider from "@/components/GallerySlider";
+import WhatsAppButton from "@/components/WhatsAppButton";
 import heroImage from "@/assets/hero-road.jpg";
 
 const highlights = [
@@ -56,22 +58,41 @@ const testimonials = [
   },
 ];
 
-const CARD_WIDTH = 350;
-const CARD_GAP = 32; // mx-4 = 16px each side
-
 const Index = () => {
-  const [carouselOffset, setCarouselOffset] = useState(0);
-  const testimonialCount = testimonials.length;
+  const [currentTestimonial, setCurrentTestimonial] = useState(0);
+
+  // Responsive: show 1 card on mobile, 2 on tablet, 3 on desktop
+  const getVisibleCards = () => {
+    if (typeof window === "undefined") return 1;
+    if (window.innerWidth >= 1024) return 3;
+    if (window.innerWidth >= 768) return 2;
+    return 1;
+  };
+
+  const [visibleCards, setVisibleCards] = useState(getVisibleCards());
+
+  // Update visible cards on resize
+  useState(() => {
+    const handleResize = () => setVisibleCards(getVisibleCards());
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  });
+
+  const maxOffset = Math.max(0, testimonials.length - visibleCards);
 
   const scrollLeft = () => {
-    setCarouselOffset((prev) => Math.min(prev + 1, 0));
+    setCurrentTestimonial((prev) => Math.max(prev - 1, 0));
   };
 
   const scrollRight = () => {
-    setCarouselOffset((prev) => Math.max(prev - 1, -(testimonialCount - 1)));
+    setCurrentTestimonial((prev) => Math.min(prev + 1, maxOffset));
   };
+
   return (
     <Layout>
+      {/* Floating WhatsApp Button */}
+      <WhatsAppButton variant="floating" />
+
       {/* Hero Section */}
       <section className="relative h-[90vh] min-h-[600px] flex items-center">
         <div
@@ -94,11 +115,11 @@ const Index = () => {
             >
               Trusted Driving School Since 2000
             </motion.span>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground mb-6 leading-tight">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground mb-6 leading-tight">
               Learn to Drive Safely with{" "}
               <span className="text-secondary">New Ambey Motor Driving School</span>
             </h1>
-            <p className="text-lg md:text-xl text-primary-foreground/90 mb-8 leading-relaxed">
+            <p className="text-base sm:text-lg md:text-xl text-primary-foreground/90 mb-8 leading-relaxed">
               Expert lessons for beginners, men, and women in Jaipur. Our patient trainers 
               help you become a confident and safe driver.
             </p>
@@ -132,7 +153,7 @@ const Index = () => {
       </section>
 
       {/* Highlights Section */}
-      <section className="py-20 bg-background">
+      <section className="py-16 md:py-20 bg-background">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -147,7 +168,7 @@ const Index = () => {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
             {highlights.map((item, index) => (
               <motion.div
                 key={item.title}
@@ -168,8 +189,11 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Gallery Slider */}
+      <GallerySlider />
+
       {/* Testimonials Section */}
-      <section className="py-20 bg-muted overflow-hidden">
+      <section className="py-16 md:py-20 bg-background overflow-hidden">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -185,50 +209,50 @@ const Index = () => {
           </motion.div>
         </div>
 
-        {/* Manual Carousel with Arrows */}
-        <div className="relative">
+        {/* Responsive Carousel */}
+        <div className="relative max-w-7xl mx-auto px-4">
           {/* Left Arrow */}
           <button
             onClick={scrollLeft}
-            disabled={carouselOffset >= 0}
-            className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-card shadow-lg flex items-center justify-center hover:bg-secondary hover:text-secondary-foreground transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+            disabled={currentTestimonial <= 0}
+            className="absolute left-0 md:left-2 top-1/2 -translate-y-1/2 z-10 w-10 h-10 md:w-12 md:h-12 rounded-full bg-card shadow-lg flex items-center justify-center hover:bg-secondary hover:text-secondary-foreground transition-colors disabled:opacity-30 disabled:cursor-not-allowed touch-manipulation"
             aria-label="Previous testimonial"
           >
-            <ChevronLeft className="w-6 h-6" />
+            <ChevronLeft className="w-5 h-5 md:w-6 md:h-6" />
           </button>
 
           {/* Right Arrow */}
           <button
             onClick={scrollRight}
-            disabled={carouselOffset <= -(testimonialCount - 1)}
-            className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-card shadow-lg flex items-center justify-center hover:bg-secondary hover:text-secondary-foreground transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+            disabled={currentTestimonial >= maxOffset}
+            className="absolute right-0 md:right-2 top-1/2 -translate-y-1/2 z-10 w-10 h-10 md:w-12 md:h-12 rounded-full bg-card shadow-lg flex items-center justify-center hover:bg-secondary hover:text-secondary-foreground transition-colors disabled:opacity-30 disabled:cursor-not-allowed touch-manipulation"
             aria-label="Next testimonial"
           >
-            <ChevronRight className="w-6 h-6" />
+            <ChevronRight className="w-5 h-5 md:w-6 md:h-6" />
           </button>
 
-          <div className="overflow-hidden px-16 md:px-24">
+          <div className="overflow-hidden mx-10 md:mx-16">
             <motion.div
-              className="flex"
-              animate={{ x: carouselOffset * (CARD_WIDTH + CARD_GAP) }}
+              className="flex gap-4 md:gap-6"
+              animate={{ x: `-${currentTestimonial * (100 / visibleCards)}%` }}
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
             >
               {testimonials.map((testimonial, index) => (
                 <div
                   key={index}
-                  className="flex-shrink-0 w-[350px] mx-4 bg-card rounded-xl p-6 shadow-card"
+                  className="flex-shrink-0 w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] bg-card rounded-xl p-5 md:p-6 shadow-card"
                 >
-                  <Quote className="w-8 h-8 text-secondary/30 mb-4" />
-                  <p className="text-foreground mb-4 leading-relaxed">"{testimonial.text}"</p>
+                  <Quote className="w-6 h-6 md:w-8 md:h-8 text-secondary/30 mb-3 md:mb-4" />
+                  <p className="text-foreground text-sm md:text-base mb-4 leading-relaxed">"{testimonial.text}"</p>
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-semibold">
                       {testimonial.name.charAt(0)}
                     </div>
                     <div>
-                      <p className="font-medium text-foreground">{testimonial.name}</p>
+                      <p className="font-medium text-foreground text-sm md:text-base">{testimonial.name}</p>
                       <div className="flex gap-0.5">
                         {[...Array(testimonial.rating)].map((_, i) => (
-                          <span key={i} className="text-yellow-500">★</span>
+                          <span key={i} className="text-yellow-500 text-sm">★</span>
                         ))}
                       </div>
                     </div>
@@ -240,14 +264,14 @@ const Index = () => {
 
           {/* Dots Indicator */}
           <div className="flex justify-center gap-2 mt-6">
-            {testimonials.map((_, index) => (
+            {Array.from({ length: maxOffset + 1 }).map((_, index) => (
               <button
                 key={index}
-                onClick={() => setCarouselOffset(-index)}
-                className={`w-2.5 h-2.5 rounded-full transition-colors ${
-                  carouselOffset === -index ? "bg-secondary" : "bg-border hover:bg-muted-foreground"
+                onClick={() => setCurrentTestimonial(index)}
+                className={`w-3 h-3 md:w-2.5 md:h-2.5 rounded-full transition-colors touch-manipulation ${
+                  currentTestimonial === index ? "bg-secondary" : "bg-border hover:bg-muted-foreground"
                 }`}
-                aria-label={`Go to testimonial ${index + 1}`}
+                aria-label={`Go to page ${index + 1}`}
               />
             ))}
           </div>
@@ -255,7 +279,7 @@ const Index = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-primary">
+      <section className="py-16 md:py-20 bg-primary">
         <div className="container mx-auto px-4 text-center">
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
@@ -263,17 +287,20 @@ const Index = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-primary-foreground mb-4">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary-foreground mb-4">
               Ready to Start Your Driving Journey?
             </h2>
-            <p className="text-lg text-primary-foreground/80 mb-8 max-w-2xl mx-auto">
+            <p className="text-base md:text-lg text-primary-foreground/80 mb-8 max-w-2xl mx-auto">
               Contact us today to book your first lesson. Our friendly team is ready to help 
               you become a confident driver.
             </p>
-            <Link to="/contact" className="btn-secondary text-lg px-8 py-4 group">
-              Contact Us Now
-              <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-            </Link>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link to="/contact" className="btn-secondary text-base md:text-lg px-6 md:px-8 py-3 md:py-4 group">
+                Contact Us Now
+                <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+              </Link>
+              <WhatsAppButton className="justify-center text-base md:text-lg px-6 md:px-8 py-3 md:py-4" />
+            </div>
           </motion.div>
         </div>
       </section>
