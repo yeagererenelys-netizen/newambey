@@ -15,6 +15,7 @@ export default {
     extend: {
       fontFamily: {
         sans: ['Roboto', 'sans-serif'],
+        heading: ['Montserrat', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -60,15 +61,14 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
-        trust: {
-          DEFAULT: "hsl(var(--trust-blue))",
-          light: "hsl(var(--trust-blue-light))",
-          dark: "hsl(var(--trust-blue-dark))",
+        asaan: {
+          DEFAULT: "hsl(var(--asaan-green))",
+          light: "hsl(var(--asaan-green-light))",
+          dark: "hsl(var(--asaan-green-dark))",
         },
-        growth: {
-          DEFAULT: "hsl(var(--growth-green))",
-          light: "hsl(var(--growth-green-light))",
-          dark: "hsl(var(--growth-green-dark))",
+        gold: {
+          DEFAULT: "hsl(var(--asaan-gold))",
+          light: "hsl(var(--asaan-gold-light))",
         },
       },
       borderRadius: {
@@ -101,6 +101,10 @@ export default {
           "0%": { transform: "rotate(0deg)" },
           "100%": { transform: "rotate(360deg)" },
         },
+        "pulse-gentle": {
+          "0%, 100%": { opacity: "1" },
+          "50%": { opacity: "0.8" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -109,11 +113,13 @@ export default {
         "scale-up": "scale-up 0.3s ease-out",
         "slide-up": "slide-up 0.6s ease-out",
         "spin-slow": "spin-slow 1s linear infinite",
+        "pulse-gentle": "pulse-gentle 2s ease-in-out infinite",
       },
       boxShadow: {
-        card: "0 4px 20px -4px rgba(30, 58, 95, 0.15)",
-        "card-hover": "0 12px 32px -8px rgba(30, 58, 95, 0.25)",
-        button: "0 4px 14px -3px rgba(34, 197, 94, 0.4)",
+        card: "0 4px 24px -6px rgba(34, 139, 34, 0.12)",
+        "card-hover": "0 16px 40px -10px rgba(34, 139, 34, 0.2)",
+        button: "0 4px 16px -4px rgba(34, 139, 34, 0.35)",
+        navbar: "0 2px 20px -2px rgba(0, 0, 0, 0.08)",
       },
     },
   },
