@@ -9,11 +9,11 @@ import photo4 from "@/assets/photo4.jpg";
 import photo5 from "@/assets/photo5.jpg";
 
 const galleryImages = [
-  { src: photo1, alt: "New Ambey training car - Suzuki Dzire" },
-  { src: photo2, alt: "New Ambey Swift car in front of driving school" },
-  { src: photo3, alt: "New Ambey WagonR training vehicle" },
-  { src: photo4, alt: "Classroom setup with road signs education" },
-  { src: photo5, alt: "New Ambey training car rear view" },
+  { src: photo1, alt: "Asaan Motor Driving School building in Agra" },
+  { src: photo2, alt: "Classroom with road signs education at Asaan" },
+  { src: photo3, alt: "Asaan training car on Agra roads" },
+  { src: photo4, alt: "Heavy vehicle training at Asaan Motor" },
+  { src: photo5, alt: "Asaan Motor training fleet" },
 ];
 
 const GallerySlider = () => {
@@ -55,22 +55,22 @@ const GallerySlider = () => {
   }, [paginate]);
 
   return (
-    <section className="py-16 bg-muted">
+    <section className="py-16 md:py-20 bg-muted">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-8"
+          className="text-center mb-10"
         >
           <h2 className="section-title">Our Facility & Fleet</h2>
           <p className="section-subtitle mx-auto">
-            Modern training vehicles and well-equipped classrooms for quality education.
+            Modern training vehicles and well-equipped classrooms for quality education in Agra.
           </p>
         </motion.div>
 
-        <div className="relative max-w-4xl mx-auto">
+        <div className="relative max-w-5xl mx-auto">
           {/* Main Image */}
           <div className="relative aspect-[16/10] rounded-2xl overflow-hidden bg-card shadow-card">
             <AnimatePresence initial={false} custom={direction}>
@@ -96,21 +96,21 @@ const GallerySlider = () => {
           {/* Navigation Arrows */}
           <button
             onClick={() => paginate(-1)}
-            className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 rounded-full bg-card/90 shadow-lg flex items-center justify-center hover:bg-secondary hover:text-secondary-foreground transition-colors z-10"
+            className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 w-11 h-11 md:w-12 md:h-12 rounded-xl bg-card/90 shadow-lg flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors z-10"
             aria-label="Previous image"
           >
             <ChevronLeft className="w-5 h-5 md:w-6 md:h-6" />
           </button>
           <button
             onClick={() => paginate(1)}
-            className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 rounded-full bg-card/90 shadow-lg flex items-center justify-center hover:bg-secondary hover:text-secondary-foreground transition-colors z-10"
+            className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 w-11 h-11 md:w-12 md:h-12 rounded-xl bg-card/90 shadow-lg flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors z-10"
             aria-label="Next image"
           >
             <ChevronRight className="w-5 h-5 md:w-6 md:h-6" />
           </button>
 
           {/* Dots Indicator */}
-          <div className="flex justify-center gap-2 mt-4">
+          <div className="flex justify-center gap-2 mt-5">
             {galleryImages.map((_, index) => (
               <button
                 key={index}
@@ -118,8 +118,8 @@ const GallerySlider = () => {
                   setDirection(index > currentIndex ? 1 : -1);
                   setCurrentIndex(index);
                 }}
-                className={`w-2.5 h-2.5 rounded-full transition-colors ${
-                  currentIndex === index ? "bg-secondary" : "bg-border hover:bg-muted-foreground"
+                className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                  currentIndex === index ? "bg-primary w-8" : "bg-border hover:bg-muted-foreground"
                 }`}
                 aria-label={`Go to image ${index + 1}`}
               />
@@ -135,9 +135,9 @@ const GallerySlider = () => {
                   setDirection(index > currentIndex ? 1 : -1);
                   setCurrentIndex(index);
                 }}
-                className={`w-20 h-14 rounded-lg overflow-hidden transition-all ${
+                className={`w-24 h-16 rounded-xl overflow-hidden transition-all duration-300 ${
                   currentIndex === index
-                    ? "ring-2 ring-secondary ring-offset-2"
+                    ? "ring-3 ring-primary ring-offset-2"
                     : "opacity-60 hover:opacity-100"
                 }`}
               >

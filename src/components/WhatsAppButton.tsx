@@ -1,7 +1,7 @@
 import { MessageCircle } from "lucide-react";
 import { motion } from "framer-motion";
 
-const WHATSAPP_URL = "https://wa.me/9636420602";
+const WHATSAPP_URL = "https://wa.me/919837040974?text=Hi%2C%20I'm%20interested%20in%20driving%20training%20at%20Asaan%20Motor%20Driving%20Training%20School.";
 
 interface WhatsAppButtonProps {
   variant?: "floating" | "inline" | "icon-only";
@@ -47,10 +47,10 @@ const WhatsAppButton = ({ variant = "inline", className = "" }: WhatsAppButtonPr
       href={WHATSAPP_URL}
       target="_blank"
       rel="noopener noreferrer"
-      className={`inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#25D366] text-white font-medium hover:bg-[#20BD5A] transition-colors ${className}`}
+      className={`inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-[#25D366] text-white font-semibold hover:bg-[#20BD5A] transition-all hover:scale-[1.02] ${className}`}
     >
       <MessageCircle className="w-5 h-5" />
-      Contact Us on WhatsApp
+      Contact on WhatsApp
     </a>
   );
 };

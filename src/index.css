@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Roboto:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,57 +6,57 @@
 
 @layer base {
   :root {
-    --background: 210 20% 98%;
-    --foreground: 210 40% 15%;
+    --background: 120 10% 98%;
+    --foreground: 150 30% 12%;
 
     --card: 0 0% 100%;
-    --card-foreground: 210 40% 15%;
+    --card-foreground: 150 30% 12%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 210 40% 15%;
+    --popover-foreground: 150 30% 12%;
 
-    --primary: 210 60% 25%;
+    --primary: 142 64% 38%;
     --primary-foreground: 0 0% 100%;
 
     --secondary: 142 70% 45%;
     --secondary-foreground: 0 0% 100%;
 
-    --muted: 210 20% 94%;
-    --muted-foreground: 210 20% 45%;
+    --muted: 120 10% 94%;
+    --muted-foreground: 150 15% 40%;
 
-    --accent: 142 70% 45%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 45 93% 58%;
+    --accent-foreground: 150 30% 12%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 210 20% 88%;
-    --input: 210 20% 88%;
-    --ring: 210 60% 25%;
+    --border: 120 10% 88%;
+    --input: 120 10% 88%;
+    --ring: 142 64% 38%;
 
-    --radius: 0.75rem;
+    --radius: 1rem;
 
-    /* Custom driving school colors */
-    --trust-blue: 210 60% 25%;
-    --trust-blue-light: 210 50% 35%;
-    --trust-blue-dark: 210 70% 18%;
-    --growth-green: 142 70% 45%;
-    --growth-green-light: 142 60% 55%;
-    --growth-green-dark: 142 80% 35%;
+    /* Custom Asaan brand colors */
+    --asaan-green: 142 64% 38%;
+    --asaan-green-light: 142 55% 50%;
+    --asaan-green-dark: 142 70% 28%;
+    --asaan-gold: 45 93% 58%;
+    --asaan-gold-light: 45 90% 70%;
     --clean-white: 0 0% 100%;
-    --soft-gray: 210 20% 96%;
-    --text-dark: 210 40% 15%;
-    --text-light: 210 20% 45%;
+    --soft-gray: 120 10% 96%;
+    --text-dark: 150 30% 12%;
+    --text-light: 150 15% 40%;
 
     /* Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(210 60% 25%), hsl(210 50% 35%));
-    --gradient-secondary: linear-gradient(135deg, hsl(142 70% 45%), hsl(142 60% 55%));
-    --gradient-hero: linear-gradient(180deg, rgba(30, 58, 95, 0.85) 0%, rgba(30, 58, 95, 0.7) 100%);
+    --gradient-primary: linear-gradient(135deg, hsl(142 64% 38%), hsl(142 55% 50%));
+    --gradient-secondary: linear-gradient(135deg, hsl(45 93% 58%), hsl(45 90% 70%));
+    --gradient-hero: linear-gradient(180deg, rgba(34, 139, 34, 0.85) 0%, rgba(34, 139, 34, 0.65) 100%);
 
     /* Shadows */
-    --shadow-card: 0 4px 20px -4px rgba(30, 58, 95, 0.15);
-    --shadow-card-hover: 0 12px 32px -8px rgba(30, 58, 95, 0.25);
-    --shadow-button: 0 4px 14px -3px rgba(34, 197, 94, 0.4);
+    --shadow-card: 0 4px 24px -6px rgba(34, 139, 34, 0.12);
+    --shadow-card-hover: 0 16px 40px -10px rgba(34, 139, 34, 0.2);
+    --shadow-button: 0 4px 16px -4px rgba(34, 139, 34, 0.35);
+    --shadow-navbar: 0 2px 20px -2px rgba(0, 0, 0, 0.08);
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -65,37 +65,37 @@
     --sidebar-accent: 240 4.8% 95.9%;
     --sidebar-accent-foreground: 240 5.9% 10%;
     --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-ring: 142 64% 38%;
   }
 
   .dark {
-    --background: 210 40% 8%;
-    --foreground: 210 20% 95%;
+    --background: 150 20% 6%;
+    --foreground: 120 10% 95%;
 
-    --card: 210 40% 12%;
-    --card-foreground: 210 20% 95%;
+    --card: 150 20% 10%;
+    --card-foreground: 120 10% 95%;
 
-    --popover: 210 40% 12%;
-    --popover-foreground: 210 20% 95%;
+    --popover: 150 20% 10%;
+    --popover-foreground: 120 10% 95%;
 
-    --primary: 210 50% 50%;
+    --primary: 142 55% 50%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 142 60% 50%;
+    --secondary: 142 60% 55%;
     --secondary-foreground: 0 0% 100%;
 
-    --muted: 210 30% 20%;
-    --muted-foreground: 210 20% 65%;
+    --muted: 150 20% 18%;
+    --muted-foreground: 120 10% 65%;
 
-    --accent: 142 60% 50%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 45 85% 55%;
+    --accent-foreground: 150 30% 12%;
 
     --destructive: 0 62% 30%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 120 10% 98%;
 
-    --border: 210 30% 20%;
-    --input: 210 30% 20%;
-    --ring: 210 50% 50%;
+    --border: 150 20% 18%;
+    --input: 150 20% 18%;
+    --ring: 142 55% 50%;
   }
 }
 
@@ -105,50 +105,59 @@
   }
 
   body {
-    @apply bg-background text-foreground font-sans antialiased;
+    @apply bg-background text-foreground antialiased;
     font-family: 'Roboto', sans-serif;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-semibold tracking-tight;
+    font-family: 'Montserrat', sans-serif;
+    @apply font-bold tracking-tight;
   }
 }
 
 @layer components {
   .btn-primary {
-    @apply inline-flex items-center justify-center px-6 py-3 rounded-lg font-medium
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-xl font-semibold
            bg-primary text-primary-foreground
            transition-all duration-300 ease-out
-           hover:scale-105 hover:shadow-lg
+           hover:scale-[1.02] hover:shadow-lg
            active:scale-[0.98];
     box-shadow: var(--shadow-button);
   }
 
   .btn-secondary {
-    @apply inline-flex items-center justify-center px-6 py-3 rounded-lg font-medium
-           bg-secondary text-secondary-foreground
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-xl font-semibold
+           bg-accent text-accent-foreground
            transition-all duration-300 ease-out
-           hover:scale-105 hover:shadow-lg
+           hover:scale-[1.02] hover:shadow-lg
            active:scale-[0.98];
-    box-shadow: var(--shadow-button);
+    box-shadow: 0 4px 16px -4px rgba(245, 183, 0, 0.4);
   }
 
   .btn-outline {
-    @apply inline-flex items-center justify-center px-6 py-3 rounded-lg font-medium
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-xl font-semibold
            border-2 border-primary text-primary bg-transparent
            transition-all duration-300 ease-out
-           hover:bg-primary hover:text-primary-foreground hover:scale-105
+           hover:bg-primary hover:text-primary-foreground hover:scale-[1.02]
+           active:scale-[0.98];
+  }
+
+  .btn-whatsapp {
+    @apply inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl font-semibold
+           bg-[#25D366] text-white
+           transition-all duration-300 ease-out
+           hover:bg-[#20BD5A] hover:scale-[1.02] hover:shadow-lg
            active:scale-[0.98];
   }
 
   .card-hover {
-    @apply bg-card rounded-xl p-6 transition-all duration-300 ease-out;
+    @apply bg-card rounded-2xl p-6 transition-all duration-300 ease-out border border-border/50;
     box-shadow: var(--shadow-card);
   }
 
   .card-hover:hover {
     box-shadow: var(--shadow-card-hover);
-    transform: translateY(-4px);
+    transform: translateY(-6px);
   }
 
   .nav-link {
@@ -158,8 +167,8 @@
 
   .nav-link::after {
     content: '';
-    @apply absolute bottom-0 left-0 w-full h-0.5 bg-secondary scale-x-0 origin-right
-           transition-transform duration-300;
+    @apply absolute bottom-0 left-0 w-full h-0.5 bg-primary scale-x-0 origin-right
+           transition-transform duration-300 rounded-full;
   }
 
   .nav-link:hover::after {
@@ -175,11 +184,12 @@
   }
 
   .section-title {
-    @apply text-3xl md:text-4xl font-bold text-foreground mb-4;
+    font-family: 'Montserrat', sans-serif;
+    @apply text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4;
   }
 
   .section-subtitle {
-    @apply text-lg text-muted-foreground max-w-2xl;
+    @apply text-lg md:text-xl text-muted-foreground max-w-2xl;
   }
 
   .hero-overlay {
@@ -188,7 +198,11 @@
 
   .gradient-text {
     @apply bg-clip-text text-transparent;
-    background-image: var(--gradient-secondary);
+    background-image: var(--gradient-primary);
+  }
+
+  .glass-effect {
+    @apply bg-card/80 backdrop-blur-lg border border-border/30;
   }
 }
 
@@ -289,4 +303,9 @@
 
 .testimonial-track:hover {
   animation-play-state: paused;
+}
+
+/* Rating stars */
+.star-rating {
+  color: hsl(45 93% 50%);
 }
